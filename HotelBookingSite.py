@@ -37,6 +37,7 @@ def addReview():
 
 @app.route("/localAttractions", methods=["GET"])
 def goLocalAttractions():
+    localAttractionsList = readCSV("static\\localAttractions.csv")
     return render_template("localAttractions.html", localAttractionsList = localAttractionsList)
 
 

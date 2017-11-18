@@ -26,14 +26,12 @@ def goHome():
 def addReview():
     reviewFilepath = "static\\reviews.csv"
     reviewList = readCSV(reviewFilepath)
-    newReviewUser = request.form[("newReviewUser")]
-    ####HOW TO SPLIT DATETIME INTO DATE AND TIME
-    #dateWtime = datetime.now()
-    #date, time = dateWtime.split(" ")
-    #newReviewTime = str(day) + "/" + str(month) + "/" + str(year) + " - " + str(hour) + ":" + str(minute) + ":" + str(second) + " - " + str(tzinfo)
-    newReviewTime = datetime.now()
+    newReviewName = request.form[("newReviewName")]
+    newReviewTitle = request.form[("newReviewTitle")]
+    now = datetime.now()
+    newReviewTime = str(now.day) + "/" + str(now.month) + "/" + str(now.year) + " at " + str(now.hour) + ":" + str(now.minute)
     newReviewContent = request.form[("newReviewContent")]
-    reviewList.append([newReviewUser, newReviewTime, newReviewContent])
+    reviewList.append([newReviewTitle, newReviewName, newReviewTime, newReviewContent])
     writeCSV(reviewFilepath, reviewList)
     return render_template("home.html", reviewList = reviewList)
 

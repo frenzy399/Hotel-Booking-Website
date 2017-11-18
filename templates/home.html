@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=utf-8" />
+        <title>Homepage</title>
+    </head>
+    <body>
+        <form action="addReview" method="post">
+            <h1>Leave a review</h1>
+            <input type="text" name="newReviewUser" placeholder="Please enter your name">
+            <textarea name="newReviewContent" placeholder="Please leave your review" cols="25" rows="4" maxlength="100"></textarea>
+            <!-- insert time as newReviewTime -->
+            <input type="submit" value="Submit Review">
+        </form>
+        {% for eachReview in reviewList %}
+        <div>
+            {{eachReview[1]}} - {{eachReview[0]}}
+            <br>
+            {{eachReview[2]}}
+        </div>
+        {% endfor %}
+    </body>
+</html>
